@@ -1,6 +1,6 @@
 === WooCommerce My Account Widget ===
 Contributors: bpluijms
-Plugin URI: http://www.geev.nl/wordpress-plugins/woocommerce-myaccount-widget/
+Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Author URI: http://www.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
