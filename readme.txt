@@ -1,0 +1,49 @@
+=== WooCommerce My Account Widget ===
+Contributors: bpluijms
+Plugin URI: http://www.geev.nl/wordpress-plugins/woocommerce-myaccount-widget/
+Author URI: http://www.geev.nl
+Tags: woocommerce, file upload
+Requires at least: 3.5
+Tested up to: 3.5.1
+Stable tag: 0.1
+License: GPLv2
+
+This plugin adds a widget with customer account information to your WooCommerce shop.
+== Description ==
+The _WooCommerce My Account Widget_ allows shop managers to display customer information in a widget.
+
+**Features**
+
+* Display link to shopping cart
+* Display number of items in shopping cart
+* Display number of unpaid orders
+* Display number of uncompleted orders
+* Display number of files left to upload (working with our WooCommerce Upload My File plugin
+* Display a log-in form when logged out
+* Localisation: English & Dutch
+
+** WooCommerce Upload My File plugin **
+This widgets shows also the number of files the customer has to upload, when you use our WooCommerce Upload My File plugin. 
+More information about that plugin on [our website](http://www.geev.nl/wordpress-plugins/woocommerce-upload-my-file/).
+
+== Installation ==
+
+1. Install WooCommerce My Account Widget either via the Wordpress.org plugin directory or by uploading the files to the '/wp-content/plugins/' directory.
+2. Activate the widget through the 'Plugins' menu in WordPress.
+
+== Upgrade Notice ==
+Please backup first.
+
+== Screenshots ==
+
+1. WooCommerce My Account Widget settings
+2. WooCommerce My Account Widget on the website, styled with custom CSS (not attached)
+
+== Changelog ==
+***WooCommerce My Account Widget***
+= 2013.04.01 - version 0.1 =
+* First release
+
+== Frequently Asked Questions ==
+= Where can I find the icons you used in your screenshot? =
+You can find more information on [our website](http://www.geev.nl/wordpress-plugins/woocommerce-my-account-widget/).
