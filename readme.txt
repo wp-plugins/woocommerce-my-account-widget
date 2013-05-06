@@ -46,4 +46,4 @@ Please backup first.
 
 == Frequently Asked Questions ==
 = Where can I find the icons you used in your screenshot? =
-You can find more information on [our website](http://www.geev.nl/wordpress-plugins/woocommerce-my-account-widget/).
+You can find more information on [our website](http://wordpress.siteevaluator.nl/product/woocommerce-my-account-widget/).
