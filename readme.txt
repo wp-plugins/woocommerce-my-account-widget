@@ -5,7 +5,7 @@ Author URI: http://www.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 0.2
+Stable tag: 0.2.1
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
