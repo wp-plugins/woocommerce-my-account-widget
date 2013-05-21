@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.1
+Version: 0.2
 */
 
 class WooCommerceMyAccountWidget extends WP_Widget
@@ -24,10 +24,11 @@ function form($instance)
 	$show_upload = isset( $instance['show_upload'] ) ? (bool) $instance['show_upload'] : false;
 	$show_unpaid = isset( $instance['show_unpaid'] ) ? (bool) $instance['show_unpaid'] : false;
 	$show_pending = isset( $instance['show_pending'] ) ? (bool) $instance['show_pending'] : false;
+	$show_logout_link = isset( $instance['show_logout_link'] ) ? (bool) $instance['show_logout_link'] : false;
 ?>
 	<p><label for="<?php echo $this->get_field_id('logged_out_title'); ?>"><?php _e('Logged out title:', 'woocommerce-myaccount-widget') ?></label>
 		<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id('logged_out_title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('logged_out_title') ); ?>" value="<?php if (isset ( $instance['logged_out_title'])) echo esc_attr( $instance['logged_out_title'] ); else echo __('Customer Login', 'woocommerce-myaccount-widget'); ?>" /></p>
-
+	
 	<p><label for="<?php echo $this->get_field_id('logged_in_title'); ?>"><?php _e('Logged in title:', 'woocommerce-myaccount-widget') ?></label>
 		<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id('logged_in_title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('logged_in_title') ); ?>" value="<?php if (isset ( $instance['logged_in_title'])) echo esc_attr( $instance['logged_in_title'] ); else echo __('Welcome %s', 'woocommerce-myaccount-widget'); ?>" /></p>
 
@@ -44,7 +45,9 @@ function form($instance)
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_unpaid') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_unpaid') ); ?>"<?php checked( $show_unpaid ); ?> />
 		<label for="<?php echo $this->get_field_id('show_unpaid'); ?>"><?php _e( 'Show number of unpaid orders', 'woocommerce-myaccount-widget' ); ?></label><br/>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_pending') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_pending') ); ?>"<?php checked( $show_pending ); ?> />
-		<label for="<?php echo $this->get_field_id('show_pending'); ?>"><?php _e( 'Show number of uncompleted orders', 'woocommerce-myaccount-widget' ); ?></label>
+		<label for="<?php echo $this->get_field_id('show_pending'); ?>"><?php _e( 'Show number of uncompleted orders', 'woocommerce-myaccount-widget' ); ?></label><br>
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_logout_link') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_logout_link') ); ?>"<?php checked( $show_logout_link ); ?> />
+		<label for="<?php echo $this->get_field_id('show_logout_link'); ?>"><?php _e( 'Show logout link', 'woocommerce-myaccount-widget' ); ?></label>
 	</p>
 <?php
 }
@@ -59,12 +62,11 @@ function update($new_instance, $old_instance)
 	$instance['show_upload'] = !empty($new_instance['show_upload']) ? 1 : 0;
 	$instance['show_unpaid'] = !empty($new_instance['show_unpaid']) ? 1 : 0;
 	$instance['show_pending'] = !empty($new_instance['show_pending']) ? 1 : 0;
+	$instance['show_logout_link'] = !empty($new_instance['show_logout_link']) ? 1 : 0;
     return $instance;
 }
 function widget($args, $instance)
 {	
-
-
 	extract($args, EXTR_SKIP);
 	global $woocommerce;
 	
@@ -80,12 +82,14 @@ function widget($args, $instance)
 		$u = (isset($instance['show_upload']) && $instance['show_upload']) ? '1' : '0';
 		$up = (isset($instance['show_unpaid']) && $instance['show_unpaid']) ? '1' : '0';
 		$p = (isset($instance['show_pending']) && $instance['show_pending']) ? '1' : '0';
+		$lo = (isset($instance['show_logout_link']) && $instance['show_logout_link']) ? '1' : '0';
 	
 		$user = get_user_by('id', get_current_user_id());
 		echo '<div class=login>';
-		if ( $logged_in_title ) echo $before_title . sprintf( $logged_in_title, ucwords($user->first_name) ) . $after_title;
+		if($user->first_name!="") { $uname=$user->first_name;} else { $uname=$user->display_name; }
+		if ( $logged_in_title ) echo $before_title . sprintf( $logged_in_title, ucwords($uname) ) . $after_title;
 		
-		if($c) {echo '<p class=clearfix><a class="woo-ma-button cart-link" href="'.$woocommerce->cart->get_cart_url() .'" title="'. __('View your shopping cart','woocommerce-myaccount-widget').'">'.__('View your shopping cart','woocommerce-myaccount-widget').'</a></p>';}
+		if($c) {echo '<p><a class="woo-ma-button cart-link woo-ma-cart-link" href="'.$woocommerce->cart->get_cart_url() .'" title="'. __('View your shopping cart','woocommerce-myaccount-widget').'">'.__('View your shopping cart','woocommerce-myaccount-widget').'</a></p>';}
 		
 		$notcompleted=0;
 		$uploadfile=0;
@@ -130,13 +134,14 @@ function widget($args, $instance)
 		if (in_array($order->status, array('on-hold','pending', 'failed'))) { $notpaid++;}
 		endforeach;
 		}
-		echo '<ul class=clearfix>';
+		echo '<ul class="clearfix woo-ma-list">';
 			if($it) {echo '<li class="woo-ma-link item"><a class="cart-contents-new" href="'.$woocommerce->cart->get_cart_url().'" title="'. __('View your shopping cart', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> product in your shopping cart', '<span>%d</span> products in your shoppingcart', $woocommerce->cart->cart_contents_count, 'woocommerce-myaccount-widget'), $woocommerce->cart->cart_contents_count).'</a></li>';}
 			if($u && function_exists('woocommerce_umf_admin_menu')) {  echo '<li class="woo-ma-link upload"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Upload files', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> file to upload', '<span>%d</span> files to upload', $uploadfile, 'woocommerce-myaccount-widget'), $uploadfile).'</a></li>'; }
 			if($up) {echo '<li class="woo-ma-link paid"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Pay orders', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> payment required', '<span>%d</span> payments required', $notpaid, 'woocommerce-myaccount-widget'), $notpaid).'</a></li>';}
 			if($p) { echo '<li class="woo-ma-link pending"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('View uncompleted orders', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> order pending', '<span>%d</span> orders pending', $notcompleted, 'woocommerce-myaccount-widget'), $notcompleted).'</a></li>';}
 		echo '</ul>';
-		echo '<p><a class="woo-ma-button myaccount-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('My Account','woocommerce-myaccount-widget').'">'.__('My Account','woocommerce-myaccount-widget').'</a>';
+		echo '<p><a class="woo-ma-button woo-ma-myaccount-link myaccount-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('My Account','woocommerce-myaccount-widget').'">'.__('My Account','woocommerce-myaccount-widget').'</a></p>';
+		echo '<p><a class="woo-ma-button woo-ma-logout-link logout-link" href="'.wp_logout_url(get_permalink()).'" title="'. __('Log out','woocommerce-myaccount-widget').'">'.__('Log out','woocommerce-myaccount-widget').'</a></p>';		
 	}
 	else {
 		echo '<div class=logout>';
@@ -160,9 +165,9 @@ function widget($args, $instance)
 			'value_username' => NULL,
 			'value_remember' => false ); 
 		wp_login_form( $args );
-		echo '<a href="'. wp_lostpassword_url().'">'. __('Lost password?', 'woocommerce-myaccount-widget').'</a>';
-		echo '<a class="woo-ma-button register-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Register','woocommerce-myaccount-widget').'">'.__('Register','woocommerce-myaccount-widget').'</a>';
-		echo '<p><a class="woo-ma-button cart-link" href="'.$woocommerce->cart->get_cart_url() .'" title="'. __('View your shopping cart','woocommerce-myaccount-widget').'">'.__('View your shopping cart','woocommerce-myaccount-widget').'</a></p>';
+		echo '<a class="woo-ma-link woo-ma-lost-pass" href="'. wp_lostpassword_url( get_permalink() ).'">'. __('Lost password?', 'woocommerce-myaccount-widget').'</a>';
+		echo ' <a class="woo-ma-button woo-ma-register-link register-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Register','woocommerce-myaccount-widget').'">'.__('Register','woocommerce-myaccount-widget').'</a>';
+		echo '<p><a class="woo-ma-button woo-ma-cart-link cart-link" href="'.$woocommerce->cart->get_cart_url() .'" title="'. __('View your shopping cart','woocommerce-myaccount-widget').'">'.__('View your shopping cart','woocommerce-myaccount-widget').'</a></p>';
 	}
 	echo '</div>';
     echo $after_widget;

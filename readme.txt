@@ -5,7 +5,7 @@ Author URI: http://www.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 0.1
+Stable tag: 0.2
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
@@ -24,7 +24,7 @@ The _WooCommerce My Account Widget_ allows shop managers to display customer inf
 
 ** WooCommerce Upload My File plugin **
 This widgets shows also the number of files the customer has to upload, when you use our WooCommerce Upload My File plugin. 
-More information about that plugin on [our website](http://www.geev.nl/wordpress-plugins/woocommerce-upload-my-file/).
+More information about that plugin on [our website](http://wordpress.geev.nl/product/woocommerce-upload-my-file/).
 
 == Installation ==
 
@@ -37,13 +37,20 @@ Please backup first.
 == Screenshots ==
 
 1. WooCommerce My Account Widget settings
-2. WooCommerce My Account Widget on the website, styled with custom CSS (not attached)
+2. WooCommerce My Account Widget on the website, in default Twenty Twelve theme
+3. WooCommerce My Account Widget on the website, in default Twenty Twelve theme
+4. WooCommerce My Account Widget on the website, styled with custom CSS (not attached)
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+= 2013.05.21 - version 0.2 =
+* Added: logout link
+* Added: basic CSS styling
+* Changed: some basic layout settings (as less as possible)
+
 = 2013.04.01 - version 0.1 =
 * First release
 
 == Frequently Asked Questions ==
 = Where can I find the icons you used in your screenshot? =
-You can find more information on [our website](http://wordpress.siteevaluator.nl/product/woocommerce-my-account-widget/).
+You can find more information on [our website](http://wordpress.geev.nl/product/woocommerce-my-account-widget/).
