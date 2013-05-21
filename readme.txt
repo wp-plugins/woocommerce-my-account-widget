@@ -38,11 +38,13 @@ Please backup first.
 
 1. WooCommerce My Account Widget settings
 2. WooCommerce My Account Widget on the website, in default Twenty Twelve theme
-3. WooCommerce My Account Widget on the website, in default Twenty Twelve theme
-4. WooCommerce My Account Widget on the website, styled with custom CSS (not attached)
+2. WooCommerce My Account Widget on the website, styled with custom CSS (not attached)
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+= 2013.05.21 - version 0.2.1 =
+* Fixed: Bug with redirect home after login / logout (Thanks to: Sebas de Reus)
+
 = 2013.05.21 - version 0.2 =
 * Added: logout link
 * Added: basic CSS styling
