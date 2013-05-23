@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.2.2
+Version: 0.2.3
 */
 
 class WooCommerceMyAccountWidget extends WP_Widget
@@ -150,6 +150,11 @@ function widget($args, $instance)
 		echo '<div class=logout>';
 		// user is not logged in
 		if ( $logged_out_title ) echo $before_title . $logged_out_title . $after_title;
+		if(isset($_GET['login']) && $_GET['login']=='failed') {
+			echo '<p class="woo-ma-login-failed woo-ma-error">';
+			_e('Login failed, please try again','woocommerce-myaccount-widget');
+			echo '</p>';
+		}
 		// login form
 		$args = array(
 			'echo' => true,
@@ -173,7 +178,27 @@ function widget($args, $instance)
 	echo '</div>';
     echo $after_widget;
 }
- 
+
 }
 load_plugin_textdomain('woocommerce-myaccount-widget', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
-add_action( 'widgets_init', create_function('', 'return register_widget("WooCommerceMyAccountWidget");') );?>
+add_action( 'widgets_init', create_function('', 'return register_widget("WooCommerceMyAccountWidget");') );
+
+/**
+* Redirect to homepage after failed login 
+* Since 0.2.3
+*/
+add_action('wp_login_failed', 'wma_login_fail'); 
+ 
+function wma_login_fail($username){
+    // Get the reffering page, where did the post submission come from?
+    $referer = parse_url($_SERVER['HTTP_REFERER']);
+	$referer= '//'.$referer['host'].'/'.$referer['path'];
+ 
+    // if there's a valid referrer, and it's not the default log-in screen
+    if(!empty($referer) && !strstr($referer,'wp-login') && !strstr($referer,'wp-admin')){
+        // let's append some information (login=failed) to the URL for the theme to use
+        wp_redirect($referer . '?login=failed'); 
+    exit;
+    }
+}
+?>
