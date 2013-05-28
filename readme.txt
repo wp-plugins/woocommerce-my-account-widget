@@ -22,7 +22,8 @@ The _WooCommerce My Account Widget_ allows shop managers to display customer inf
 * Display a log-in form when logged out
 * Localisation: English, Dutch, Norwegian
 
-** WooCommerce Upload My File plugin **
+**WooCommerce Upload My File plugin**
+
 This widgets shows also the number of files the customer has to upload, when you use our WooCommerce Upload My File plugin. 
 More information about that plugin on [our website](http://wordpress.geev.nl/product/woocommerce-upload-my-file/).
 
