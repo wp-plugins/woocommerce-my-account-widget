@@ -5,7 +5,7 @@ Author URI: http://www.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 0.2.3
+Stable tag: 0.2.4
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
@@ -20,7 +20,7 @@ The _WooCommerce My Account Widget_ allows shop managers to display customer inf
 * Display number of uncompleted orders
 * Display number of files left to upload (working with our WooCommerce Upload My File plugin
 * Display a log-in form when logged out
-* Localisation: English & Dutch
+* Localisation: English, Dutch, Norwegian
 
 ** WooCommerce Upload My File plugin **
 This widgets shows also the number of files the customer has to upload, when you use our WooCommerce Upload My File plugin. 
@@ -42,6 +42,9 @@ Please backup first.
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+= 2013.05.28 - version 0.2.4 =
+* Added: Norwegian translations (Thanks to Jan-Ivar Mellingen) 
+
 = 2013.05.23 - version 0.2.3 =
 * Changed: After failed login, redirect to same page instead of normal WP login failed.
 
