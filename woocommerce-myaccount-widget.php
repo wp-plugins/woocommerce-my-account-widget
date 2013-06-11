@@ -5,12 +5,10 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.2.4
+Version: 0.2.5
 */
-
 class WooCommerceMyAccountWidget extends WP_Widget
 {
-
 function WooCommerceMyAccountWidget()
 {
 	$widget_ops = array('classname' => 'WooCommerceMyAccountWidget', 'description' => __( 'WooCommerce My Account Widget shows order & account data', 'woocommerce-myaccount-widget' ) );
@@ -86,7 +84,6 @@ function widget($args, $instance)
 	
 	// redirect url after login / logout
 	if(is_multisite()) { $woo_ma_home=network_site_url(); } else {$woo_ma_home=site_url();}
-	
 		$user = get_user_by('id', get_current_user_id());
 		echo '<div class=login>';
 		if($user->first_name!="") { $uname=$user->first_name;} else { $uname=$user->display_name; }
@@ -144,7 +141,7 @@ function widget($args, $instance)
 			if($p) { echo '<li class="woo-ma-link pending"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('View uncompleted orders', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> order pending', '<span>%d</span> orders pending', $notcompleted, 'woocommerce-myaccount-widget'), $notcompleted).'</a></li>';}
 		echo '</ul>';
 		echo '<p><a class="woo-ma-button woo-ma-myaccount-link myaccount-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('My Account','woocommerce-myaccount-widget').'">'.__('My Account','woocommerce-myaccount-widget').'</a></p>';
-		echo '<p><a class="woo-ma-button woo-ma-logout-link logout-link" href="'.wp_logout_url($woo_ma_home).'" title="'. __('Log out','woocommerce-myaccount-widget').'">'.__('Log out','woocommerce-myaccount-widget').'</a></p>';		
+		if($lo==1) { echo '<p><a class="woo-ma-button woo-ma-logout-link logout-link" href="'.wp_logout_url($woo_ma_home).'" title="'. __('Log out','woocommerce-myaccount-widget').'">'.__('Log out','woocommerce-myaccount-widget').'</a></p>'; }
 	}
 	else {
 		echo '<div class=logout>';
