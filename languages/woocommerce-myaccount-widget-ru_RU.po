@@ -1,0 +1,188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce My Account Widget v0.2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-10-12 16:54:36+0000\n"
+"Last-Translator: 192kb <192kbyte@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%100/10==1 ? 2 : n%10==1 ? 0 : (n+9)%10>3 ? 2 : 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: woocommerce-myaccount-widget.php:14
+#@ woocommerce-myaccount-widget
+msgid "WooCommerce My Account Widget shows order & account data"
+msgstr "WooCommerce My Account Widget отображает заказы и данные учетной записи"
+
+#: woocommerce-myaccount-widget.php:15
+#@ woocommerce-myaccount-widget
+msgid "WooCommerce My Account Widget"
+msgstr "WooCommerce My Account виджет"
+
+#: woocommerce-myaccount-widget.php:27
+#@ woocommerce-myaccount-widget
+msgid "Logged out title:"
+msgstr "Заголовок для гостей:"
+
+#: woocommerce-myaccount-widget.php:28
+#: woocommerce-myaccount-widget.php:71
+#@ woocommerce-myaccount-widget
+msgid "Customer Login"
+msgstr "Вход для покупателей"
+
+#: woocommerce-myaccount-widget.php:30
+#@ woocommerce-myaccount-widget
+msgid "Logged in title:"
+msgstr "Заголовок для залогиненых покупателей:"
+
+#: woocommerce-myaccount-widget.php:31
+#: woocommerce-myaccount-widget.php:72
+#, php-format
+#@ woocommerce-myaccount-widget
+msgid "Welcome %s"
+msgstr "Добро пожаловать, %s"
+
+#: woocommerce-myaccount-widget.php:34
+#@ woocommerce-myaccount-widget
+msgid "Show link to shopping cart"
+msgstr "Отображать ссылку на корзину"
+
+#: woocommerce-myaccount-widget.php:36
+#@ woocommerce-myaccount-widget
+msgid "Show number of items in cart"
+msgstr "Отображать количество товаров в корзине"
+
+#: woocommerce-myaccount-widget.php:41
+#@ woocommerce-myaccount-widget
+msgid "Show number of uploads left"
+msgstr "Показывать количество отсавшихся загрузок"
+
+#: woocommerce-myaccount-widget.php:44
+#@ woocommerce-myaccount-widget
+msgid "Show number of unpaid orders"
+msgstr "Показывать количество неоплаченных заказов"
+
+#: woocommerce-myaccount-widget.php:46
+#@ woocommerce-myaccount-widget
+msgid "Show number of uncompleted orders"
+msgstr "Показывать количество незаконченных заказов"
+
+#: woocommerce-myaccount-widget.php:48
+#@ woocommerce-myaccount-widget
+msgid "Show logout link"
+msgstr "Показывать \\\"Выход\\\""
+
+#: woocommerce-myaccount-widget.php:93
+#: woocommerce-myaccount-widget.php:139
+#: woocommerce-myaccount-widget.php:174
+#@ woocommerce-myaccount-widget
+msgid "View your shopping cart"
+msgstr "Моя корзина"
+
+#: woocommerce-myaccount-widget.php:139
+#, php-format
+#@ woocommerce-myaccount-widget
+msgid "<span>%d</span> product in your shopping cart"
+msgid_plural "<span>%d</span> products in your shoppingcart"
+msgstr[0] "В вашей коризне <span>%d</span> товар "
+msgstr[1] "В вашей коризне <span>%d</span> шт. "
+msgstr[2] "В вашей коризне <span>%d</span> шт. "
+
+#: woocommerce-myaccount-widget.php:140
+#@ woocommerce-myaccount-widget
+msgid "Upload files"
+msgstr "Загрузить файлы"
+
+#: woocommerce-myaccount-widget.php:140
+#, php-format
+#@ woocommerce-myaccount-widget
+msgid "<span>%d</span> file to upload"
+msgid_plural "<span>%d</span> files to upload"
+msgstr[0] "<span>%d</span> файл для загрузки"
+msgstr[1] "Количество файлов для загрузки: <span>%d</span>"
+msgstr[2] "Количество файлов для загрузки: <span>%d</span>"
+
+#: woocommerce-myaccount-widget.php:141
+#@ woocommerce-myaccount-widget
+msgid "Pay orders"
+msgstr "Оплатить заказ"
+
+#: woocommerce-myaccount-widget.php:141
+#, php-format
+#@ woocommerce-myaccount-widget
+msgid "<span>%d</span> payment required"
+msgid_plural "<span>%d</span> payments required"
+msgstr[0] "<span>%d</span> требует оплаты"
+msgstr[1] "<span>%d</span> требуют оплаты"
+msgstr[2] "<span>%d</span> требуют оплаты"
+
+#: woocommerce-myaccount-widget.php:142
+#@ woocommerce-myaccount-widget
+msgid "View uncompleted orders"
+msgstr "Показать незавершенные заказы"
+
+#: woocommerce-myaccount-widget.php:142
+#, php-format
+#@ woocommerce-myaccount-widget
+msgid "<span>%d</span> order pending"
+msgid_plural "<span>%d</span> orders pending"
+msgstr[0] "<span>%d</span> заказ ожидается"
+msgstr[1] "<span>%d</span> заказа(-ов) ожидается"
+msgstr[2] "<span>%d</span> заказа(-ов) ожидается"
+
+#: woocommerce-myaccount-widget.php:144
+#@ woocommerce-myaccount-widget
+msgid "My Account"
+msgstr "Профиль"
+
+#: woocommerce-myaccount-widget.php:145
+#@ woocommerce-myaccount-widget
+msgid "Log out"
+msgstr "Выход"
+
+#: woocommerce-myaccount-widget.php:153
+#@ woocommerce-myaccount-widget
+msgid "Login failed, please try again"
+msgstr "Ошибка, попробуйте еще раз"
+
+#: woocommerce-myaccount-widget.php:160
+#@ default
+msgid "Username"
+msgstr ""
+
+#: woocommerce-myaccount-widget.php:161
+#@ default
+msgid "Password"
+msgstr ""
+
+#: woocommerce-myaccount-widget.php:162
+#@ default
+msgid "Remember Me"
+msgstr ""
+
+#: woocommerce-myaccount-widget.php:163
+#@ default
+msgid "Log In"
+msgstr ""
+
+#: woocommerce-myaccount-widget.php:172
+#@ woocommerce-myaccount-widget
+msgid "Lost password?"
+msgstr "Забыли пароль?"
+
+#: woocommerce-myaccount-widget.php:173
+#@ woocommerce-myaccount-widget
+msgid "Register"
+msgstr "Регистрация"
+
