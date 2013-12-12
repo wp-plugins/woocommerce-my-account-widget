@@ -1,10 +1,10 @@
 === WooCommerce My Account Widget ===
 Contributors: bpluijms
 Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
-Author URI: http://www.geev.nl
+Author URI: http://wordpress.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: 0.2.9
 License: GPLv2
 
@@ -42,6 +42,7 @@ Please backup first.
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+
 = 2013.11.16- version 0.2.9 =
 * Tweak: Better support for WPML translations
 * Fixed: show registration link only when registration is enabled.
