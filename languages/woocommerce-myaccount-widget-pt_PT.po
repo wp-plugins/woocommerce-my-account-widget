@@ -1,0 +1,150 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce My Account Widget\n"
+"POT-Creation-Date: 2013-01-07 12:26+0100\n"
+"PO-Revision-Date: 2014-02-11 17:02-0000\n"
+"Last-Translator: Antonio Pinto <apinto@numeroserabiscos.com>\n"
+"Language-Team: Números e Rabiscos <design@numeroserabiscos.com>\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: woocommerce-myaccount-widget.php:15
+msgid "WooCommerce My Account Widget shows order & account data"
+msgstr "WooCommerce My Account Widget mostra dados da encomenda e da conta"
+
+#: woocommerce-myaccount-widget.php:16
+msgid "WooCommerce My Account Widget"
+msgstr "WooCommerce My Account Widget"
+
+#: woocommerce-myaccount-widget.php:28
+msgid "Logged out title:"
+msgstr "Titulo para o \"logout\":"
+
+#: woocommerce-myaccount-widget.php:29 woocommerce-myaccount-widget.php:70
+msgid "Customer Login"
+msgstr "Login de Cliente"
+
+#: woocommerce-myaccount-widget.php:31
+msgid "Logged in title:"
+msgstr "Titulo de \"login\":"
+
+#: woocommerce-myaccount-widget.php:32 woocommerce-myaccount-widget.php:71
+#, php-format
+msgid "Welcome %s"
+msgstr "Bem vindo %s"
+
+#: woocommerce-myaccount-widget.php:35
+msgid "Show link to shopping cart"
+msgstr "Mostrar link para o carrinho de compras"
+
+#: woocommerce-myaccount-widget.php:37
+msgid "Show number of items in cart"
+msgstr "Mostrar número de items no carrinho"
+
+#: woocommerce-myaccount-widget.php:42
+msgid "Show number of uploads left"
+msgstr "Mostrar número de ficheiros por enviar"
+
+#: woocommerce-myaccount-widget.php:45
+msgid "Show number of unpaid orders"
+msgstr "Mostrar número de encomendas por pagar"
+
+#: woocommerce-myaccount-widget.php:47
+msgid "Show number of uncompleted orders"
+msgstr "Mostrar número de encomendas incompletas"
+
+#: woocommerce-myaccount-widget.php:87 woocommerce-myaccount-widget.php:140
+#: woocommerce-myaccount-widget.php:171
+msgid "View your shopping cart"
+msgstr "Ver o Carrinho de Compras"
+
+#: woocommerce-myaccount-widget.php:132
+msgid "Sorry, no files have been uploaded yet."
+msgstr "Desculpe, ainda não foram enviados ficheiros."
+
+#: woocommerce-myaccount-widget.php:140
+#, php-format
+msgid "<span>%d</span> products in your shoppingcart"
+msgstr "<span>%d</span> produtos no seu carrinho de compras"
+
+#: woocommerce-myaccount-widget.php:140
+#, php-format
+msgid "<span>%d</span> product in your shopping cart"
+msgstr "<span>%d</span> produtos no seu carrinho de compras"
+
+#: woocommerce-myaccount-widget.php:141
+msgid "Upload files"
+msgstr "Enviar ficheiros"
+
+#: woocommerce-myaccount-widget.php:141
+#, php-format
+msgid "<span>%d</span> files to upload"
+msgstr "<span>%d</span> ficheiros por enviar"
+
+#: woocommerce-myaccount-widget.php:141
+#, php-format
+msgid "<span>%d</span> file to upload"
+msgstr "<span>%d</span> ficheiro para enviar"
+
+#: woocommerce-myaccount-widget.php:142
+msgid "Pay orders"
+msgstr "Pagar Encomendas"
+
+#: woocommerce-myaccount-widget.php:142
+#, php-format
+msgid "<span>%d</span> payments required"
+msgstr "<span>%d</span> pagamentos necessários"
+
+#: woocommerce-myaccount-widget.php:142
+#, php-format
+msgid "<span>%d</span> payment required"
+msgstr "<span>%d</span> pagamento necessário"
+
+#: woocommerce-myaccount-widget.php:143
+msgid "View uncompleted orders"
+msgstr "Ver encomendas incompletas"
+
+#: woocommerce-myaccount-widget.php:143
+#, php-format
+msgid "<span>%d</span> orders pending"
+msgstr "<span>%d</span> encomendas pendentes"
+
+#: woocommerce-myaccount-widget.php:143
+#, php-format
+msgid "<span>%d</span> order pending"
+msgstr "<span>%d</span> encomenda pendente"
+
+#: woocommerce-myaccount-widget.php:145
+msgid "My Account"
+msgstr "Minha Conta"
+
+#: woocommerce-myaccount-widget.php:157
+msgid "Username"
+msgstr "Utilizador"
+
+#: woocommerce-myaccount-widget.php:158
+msgid "Password"
+msgstr "Password"
+
+#: woocommerce-myaccount-widget.php:159
+msgid "Remember Me"
+msgstr "Lembrar-me"
+
+#: woocommerce-myaccount-widget.php:160
+msgid "Log In"
+msgstr "Login"
+
+#: woocommerce-myaccount-widget.php:169
+msgid "Lost password?"
+msgstr "Perdeu a password?"
+
+#: woocommerce-myaccount-widget.php:170
+msgid "Register"
+msgstr "Registar Conta"
