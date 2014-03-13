@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.2.9
+Version: 0.2.9.2
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -136,10 +136,38 @@ function widget($args, $instance)
 		endforeach;
 		}
 		echo '<ul class="clearfix woo-ma-list">';
-			if($it) {echo '<li class="woo-ma-link item"><a class="cart-contents-new" href="'.$woocommerce->cart->get_cart_url().'" title="'. __('View your shopping cart', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> '.__('product in your shopping cart', 'woocommerce-myaccount-widget').'', '<span>%d</span> '.__('products in your shoppingcart', 'woocommerce-myaccount-widget').'', $woocommerce->cart->cart_contents_count, 'woocommerce-myaccount-widget'), $woocommerce->cart->cart_contents_count).'</a></li>';} 
-			if($u && function_exists('woocommerce_umf_admin_menu')) {  echo '<li class="woo-ma-link upload"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Upload files', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> '.__('file to upload', 'woocommerce-myaccount-widget').'', '<span>%d</span> '.__('files to upload', 'woocommerce-myaccount-widget').'', $uploadfile, 'woocommerce-myaccount-widget'), $uploadfile).'</a></li>';} 
-			if($up) {echo '<li class="woo-ma-link paid"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Pay orders', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> '.__('payment required', 'woocommerce-myaccount-widget').'', '<span>%d</span> '.__('payments required', 'woocommerce-myaccount-widget').'', $notpaid, 'woocommerce-myaccount-widget'), $notpaid).'</a></li>';} 
-			if($p) {echo '<li class="woo-ma-link pending"><a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('View uncompleted orders', 'woocommerce-myaccount-widget').'">'.sprintf(_n('<span>%d</span> '.__('order pending', 'woocommerce-myaccount-widget').'', '<span>%d</span> '.__('orders pending', 'woocommerce-myaccount-widget').'', $notcompleted, 'woocommerce-myaccount-widget'), $notcompleted).'</a></li>';} 
+			if($it) {
+				echo '<li class="woo-ma-link item">
+						<a class="cart-contents-new" href="'.$woocommerce->cart->get_cart_url().'" title="'. __('View your shopping cart', 'woocommerce-myaccount-widget').'">
+							<span>'.$woocommerce->cart->cart_contents_count.'</span> '
+							._n('product in your shopping cart','products in your shoppingcart', $woocommerce->cart->cart_contents_count, 'woocommerce-myaccount-widget' ).'
+						</a>
+					</li>';
+			} 
+			if($u && function_exists('woocommerce_umf_admin_menu')) {  
+				echo '<li class="woo-ma-link upload">
+						<a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Upload files', 'woocommerce-myaccount-widget').'">
+							<span>'.$uploadfile.'</span> '
+							._n('file to upload','files to upload', $uploadfile, 'woocommerce-myaccount-widget' ).'
+						</a>
+					</li>';
+			} 
+			if($up) {
+				echo '<li class="woo-ma-link paid">
+						<a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Pay orders', 'woocommerce-myaccount-widget').'">
+							<span>'.$notpaid.'</span> '
+							._n('payment required','payments required', $notpaid, 'woocommerce-myaccount-widget' ).'
+						</a>
+					</li>';
+			} 
+			if($p) {
+				echo '<li class="woo-ma-link pending">
+						<a href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('View uncompleted orders', 'woocommerce-myaccount-widget').'">
+							<span>'.$notcompleted.'</span> '
+							._n('order pending','orders pending', $notcompleted, 'woocommerce-myaccount-widget' ).'
+						</a>
+					</li>';
+			} 
 		echo '</ul>';
 		echo '<p><a class="woo-ma-button woo-ma-myaccount-link myaccount-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('My Account','woocommerce-myaccount-widget').'">'.__('My Account','woocommerce-myaccount-widget').'</a></p>';
 		if($lo==1) { echo '<p><a class="woo-ma-button woo-ma-logout-link logout-link" href="'.wp_logout_url($woo_ma_home).'" title="'. __('Log out','woocommerce-myaccount-widget').'">'.__('Log out','woocommerce-myaccount-widget').'</a></p>'; }

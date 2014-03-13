@@ -2,20 +2,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce My Account Widget v1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-16 15:03+0100\n"
-"PO-Revision-Date: 2013-11-16 15:06+0100\n"
+"POT-Creation-Date: 2014-03-12 19:47+0100\n"
+"PO-Revision-Date: 2014-03-12 19:47+0100\n"
 "Last-Translator: Bart Pluijms <info@geev.nl>\n"
 "Language-Team: Geev vormgeeving <info@geev.nl>\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_nx_noop:1,2;_n_noop:1,2;_nx:1,2\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 # @ woocommerce-myaccount-widget
@@ -82,117 +82,94 @@ msgstr "Toon log-uit link"
 
 # @ woocommerce-myaccount-widget
 #: ../woocommerce-myaccount-widget.php:93
-#: ../woocommerce-myaccount-widget.php:139
-#: ../woocommerce-myaccount-widget.php:178
+#: ../woocommerce-myaccount-widget.php:141
+#: ../woocommerce-myaccount-widget.php:206
 msgid "View your shopping cart"
 msgstr "Bekijk winkelwagentje"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:139
+#: ../woocommerce-myaccount-widget.php:143
 msgid "product in your shopping cart"
-msgstr "product in winkelwagen"
+msgid_plural "products in your shoppingcart"
+msgstr[0] "product in winkelwagen"
+msgstr[1] "producten in winkelwagen"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:139
-msgid "products in your shoppingcart"
-msgstr "producten in winkelwagen"
-
-# @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:139
-#: ../woocommerce-myaccount-widget.php:140
-#: ../woocommerce-myaccount-widget.php:141
-#: ../woocommerce-myaccount-widget.php:142
-#, php-format
-msgid "<span>%d</span> "
-msgid_plural "<span>%d</span> "
-msgstr[0] ""
-msgstr[1] ""
-
-# @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:140
+#: ../woocommerce-myaccount-widget.php:149
 msgid "Upload files"
 msgstr "Upload bestanden"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:140
+#: ../woocommerce-myaccount-widget.php:151
 msgid "file to upload"
-msgstr "bestand aan te leveren"
+msgid_plural "files to upload"
+msgstr[0] "bestand aan te leveren"
+msgstr[1] "bestanden aan te leveren"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:140
-msgid "files to upload"
-msgstr "bestanden aan te leveren"
-
-# @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:141
+#: ../woocommerce-myaccount-widget.php:157
 msgid "Pay orders"
 msgstr "Betaal bestellingen"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:141
+#: ../woocommerce-myaccount-widget.php:159
 msgid "payment required"
-msgstr "betaling nodig"
+msgid_plural "payments required"
+msgstr[0] "betaling nodig"
+msgstr[1] "betalingen nodig"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:141
-msgid "payments required"
-msgstr "betalingen nodig"
-
-# @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:142
+#: ../woocommerce-myaccount-widget.php:165
 msgid "View uncompleted orders"
 msgstr "Bekijk bestellingen in verwerking"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:142
+#: ../woocommerce-myaccount-widget.php:167
 msgid "order pending"
-msgstr "bestelling in behandeling"
+msgid_plural "orders pending"
+msgstr[0] "bestelling in behandeling"
+msgstr[1] "bestellingen in behandeling"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:142
-msgid "orders pending"
-msgstr "bestellingen in behandeling"
-
-# @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:144
+#: ../woocommerce-myaccount-widget.php:172
 msgid "My Account"
 msgstr "Mijn account"
 
 # @ default
-#: ../woocommerce-myaccount-widget.php:145
+#: ../woocommerce-myaccount-widget.php:173
 msgid "Log out"
 msgstr "Uitloggen"
 
-#: ../woocommerce-myaccount-widget.php:153
+#: ../woocommerce-myaccount-widget.php:181
 msgid "Login failed, please try again"
 msgstr "Inloggen mislukt, probeer a.u.b. opnieuw."
 
 # @ default
-#: ../woocommerce-myaccount-widget.php:160
+#: ../woocommerce-myaccount-widget.php:188
 msgid "Username"
 msgstr "Gebruikersnaam"
 
 # @ default
-#: ../woocommerce-myaccount-widget.php:161
+#: ../woocommerce-myaccount-widget.php:189
 msgid "Password"
 msgstr "Wachtwoord"
 
 # @ default
-#: ../woocommerce-myaccount-widget.php:162
+#: ../woocommerce-myaccount-widget.php:190
 msgid "Remember Me"
 msgstr "Onthoud mij"
 
 # @ default
-#: ../woocommerce-myaccount-widget.php:163
+#: ../woocommerce-myaccount-widget.php:191
 msgid "Log In"
 msgstr "Inloggen"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:172
+#: ../woocommerce-myaccount-widget.php:200
 msgid "Lost password?"
 msgstr "Wachtwoord vergeten?"
 
 # @ woocommerce-myaccount-widget
-#: ../woocommerce-myaccount-widget.php:175
+#: ../woocommerce-myaccount-widget.php:203
 msgid "Register"
 msgstr "Nieuwe klant"
