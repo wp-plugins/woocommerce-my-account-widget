@@ -5,7 +5,7 @@ Author URI: http://wordpress.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
 Tested up to: 3.8
-Stable tag: 0.2.9.2
+Stable tag: 0.3
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
@@ -42,6 +42,14 @@ Please backup first.
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+= 2014.04.06- version 0.3 =
+* Added: Login with Email (thanks to pokeraitis for the idea & credits to the developers of the WP Email Login plugin )
+* Added: Custom login URL (thanks to rhonn for the idea)
+* Fixed: Better support for WPML (not fully supported yet) - Please make sure you update your language strings! - Please see FAQ
+
+= 2014.03.13- version 0.2.9.3 =
+* Added: We've missed some languages strings and we've added it now ;-) SORRY!
+
 = 2014.03.12- version 0.2.9.2 =
 * Added: Italian languages
 * Changed: We've changed the way plural and singular language strings are shown. Please update your languages files if translations are not shown correctly anymore! Sorry for this!
@@ -88,3 +96,6 @@ Please backup first.
 == Frequently Asked Questions ==
 = Where can I find the icons you used in your screenshot? =
 You can find more information on [our website](http://wordpress.geev.nl/product/woocommerce-my-account-widget/).
+
+= Can I use WPML with WooCommerce My Account Widget? =
+Yes you can, please follow instructions on [our website](http://wordpress.geev.nl/support/documentation/woocommerce-my-account-widget/use-woocommerce-account-widget-wpml/).
