@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.3
+Version: 0.4
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -105,9 +105,12 @@ function widget($args, $instance)
 
 	echo $before_widget;
     
+	$c = (isset($instance['show_cartlink']) && $instance['show_cartlink']) ? '1' : '0';
+	$cart_page_id = get_option('woocommerce_cart_page_id');
+	
 	//check if user is logged in 
 	if ( is_user_logged_in() ) { 
-		$c = (isset($instance['show_cartlink']) && $instance['show_cartlink']) ? '1' : '0';
+		
 		$it = (isset($instance['show_items']) && $instance['show_items']) ? '1' : '0';
 		$u = (isset($instance['show_upload']) && $instance['show_upload']) ? '1' : '0';
 		$up = (isset($instance['show_unpaid']) && $instance['show_unpaid']) ? '1' : '0';
@@ -123,7 +126,7 @@ function widget($args, $instance)
 		if ( $logged_in_title ) echo $before_title . sprintf( $logged_in_title, ucwords($uname) ) . $after_title;
 		
 		
-		$cart_page_id = get_option('woocommerce_cart_page_id');
+		
 				
 		if($c) {echo '<p><a class="woo-ma-button cart-link woo-ma-cart-link" href="'.get_permalink(wma_lang_id($cart_page_id)) .'" title="'. __('View your shopping cart','woocommerce-my-account-widget').'">'.__('View your shopping cart','woocommerce-my-account-widget').'</a></p>';}
 		
@@ -247,8 +250,9 @@ function widget($args, $instance)
 		if(get_option('users_can_register')) {  
 			echo ' <a class="woo-ma-button woo-ma-register-link register-link" href="'.get_permalink( get_option('woocommerce_myaccount_page_id') ).'" title="'. __('Register','woocommerce-my-account-widget').'">'.__('Register','woocommerce-my-account-widget').'</a>';
 		}
-		
-		echo '<p><a class="woo-ma-button woo-ma-cart-link cart-link" href="'.get_permalink(wma_lang_id($cart_page_id)) .'" title="'. __('View your shopping cart','woocommerce-my-account-widget').'">'.__('View your shopping cart','woocommerce-my-account-widget').'</a></p>';
+		if($c) {
+			echo '<p><a class="woo-ma-button woo-ma-cart-link cart-link" href="'.get_permalink(wma_lang_id($cart_page_id)) .'" title="'. __('View your shopping cart','woocommerce-my-account-widget').'">'.__('View your shopping cart','woocommerce-my-account-widget').'</a></p>';
+		}
 	}
 	echo '</div>';
     echo $after_widget;

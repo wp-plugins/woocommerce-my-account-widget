@@ -4,8 +4,8 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Author URI: http://wordpress.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 0.3
+Tested up to: 3.9.1
+Stable tag: 0.4
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
@@ -42,6 +42,9 @@ Please backup first.
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+= 2014.05.12- version 0.4 =
+* Corrected cart link on logged-out version
+
 = 2014.04.06- version 0.3 =
 * Added: Login with Email (thanks to pokeraitis for the idea & credits to the developers of the WP Email Login plugin )
 * Added: Custom login URL (thanks to rhonn for the idea)
