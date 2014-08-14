@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4
+Version: 0.4.1
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -63,7 +63,7 @@ function form($instance)
 				}
 				?>
 		</select>
-	
+
 	<p><?php _e('Other options','woocommerce-my-account-widget');?>:<br>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('login_with_email') ); ?>" name="<?php echo esc_attr( $this->get_field_name('login_with_email') ); ?>"<?php checked( $login_with_email ); ?> />
 		<label for="<?php echo $this->get_field_id('login_with_email'); ?>"><?php _e( 'Login with email address', 'woocommerce-my-account-widget' ); ?></label>
@@ -134,21 +134,38 @@ function widget($args, $instance)
 		$uploadfile=0;
 		$notpaid=0;
 		$customer_id = get_current_user_id();
-		$args = array(
-			'numberposts'     => -1,
-			'meta_key'        => '_customer_user',
-			'meta_value'	  => $customer_id,
-			'post_type'       => 'shop_order',
-			'post_status'     => 'publish'
-		);
-		$customer_orders = get_posts($args);
+		if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
+
+            $customer_orders = get_posts( array(
+                'numberposts' => -1,
+                'meta_key'    => '_customer_user',
+                'meta_value'  => get_current_user_id(),
+                'post_type'   => 'shop_order',
+                'post_status' => 'publish'
+            ) );
+
+        } else {
+
+            $customer_orders = get_posts( apply_filters( 'woocommerce_my_account_my_orders_query', array(
+            	'numberposts' => -1,
+            	'meta_key'    => '_customer_user',
+            	'meta_value'  => get_current_user_id(),
+            	'post_type'   => wc_get_order_types( 'view-orders' ),
+            	'post_status' => array_keys( wc_get_order_statuses() )
+            ) ) );
+
+        }
 		if ($customer_orders) {
 			foreach ($customer_orders as $customer_order) :
 				$woocommerce1=0;
-				$order = new WC_Order();
+				if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
+				    $order = new WC_Order();
+                } else {
+                    $order = get_order();
+                }
 				$order->populate( $customer_order );
-				$status = get_term_by('slug', $order->status, 'shop_order_status');
-				if($status->name!='completed' && $status->name!='cancelled'){ $notcompleted++; }
+				//$status = get_term_by('slug', $order->status, 'shop_order_status');
+				if($order->status!='completed' && $order->status!='cancelled'){ $notcompleted++; }
 				
 				
 			/* upload files */
@@ -238,7 +255,7 @@ function widget($args, $instance)
 			'id_submit' => 'wp-submit',
 			'remember' => false,
 			'value_username' => NULL,
-			'value_remember' => false ); 
+			'value_remember' => false );
 			
 		if(isset($instance['wma_redirect']) && $instance['wma_redirect']!="") {
 			$args['redirect']=get_permalink(wma_lang_id($instance['wma_redirect']));
