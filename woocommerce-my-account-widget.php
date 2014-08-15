@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4.1
+Version: 0.4.2
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -20,6 +20,7 @@ function form($instance)
 	$show_cartlink = isset( $instance['show_cartlink'] ) ? (bool) $instance['show_cartlink'] : false;
 	$show_items = isset( $instance['show_items'] ) ? (bool) $instance['show_items'] : false;
 	$show_upload = isset( $instance['show_upload'] ) ? (bool) $instance['show_upload'] : false;
+	$show_upload_new = isset( $instance['show_upload_new'] ) ? (bool) $instance['show_upload_new'] : false;
 	$show_unpaid = isset( $instance['show_unpaid'] ) ? (bool) $instance['show_unpaid'] : false;
 	$show_pending = isset( $instance['show_pending'] ) ? (bool) $instance['show_pending'] : false;
 	$show_logout_link = isset( $instance['show_logout_link'] ) ? (bool) $instance['show_logout_link'] : false;
@@ -36,12 +37,14 @@ function form($instance)
 		<label for="<?php echo $this->get_field_id('show_cartlink'); ?>"><?php _e( 'Show link to shopping cart', 'woocommerce-my-account-widget' ); ?></label><br />
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_items') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_items') ); ?>"<?php checked( $show_items ); ?> />
 		<label for="<?php echo $this->get_field_id('show_items'); ?>"><?php _e( 'Show number of items in cart', 'woocommerce-my-account-widget' ); ?></label><br />
-		
-		
-		<?php if (function_exists('woocommerce_umf_admin_menu')) { ?>
+
+        <?php if (class_exists('WPF_Uploads')): ?>
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_upload_new') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_upload_new') ); ?>"<?php checked( $show_upload_new ); ?> />
+		<label for="<?php echo $this->get_field_id('show_upload_new'); ?>"><?php _e( 'Show number of uploads left', 'woocommerce-my-account-widget' ); ?></label><br />
+		<?php elseif (function_exists('woocommerce_umf_admin_menu')): ?>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_upload') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_upload') ); ?>"<?php checked( $show_upload ); ?> />
 		<label for="<?php echo $this->get_field_id('show_upload'); ?>"><?php _e( 'Show number of uploads left', 'woocommerce-my-account-widget' ); ?></label><br />
-		<?php }?>
+		<?php endif; ?>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_unpaid') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_unpaid') ); ?>"<?php checked( $show_unpaid ); ?> />
 		<label for="<?php echo $this->get_field_id('show_unpaid'); ?>"><?php _e( 'Show number of unpaid orders', 'woocommerce-my-account-widget' ); ?></label><br/>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_pending') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_pending') ); ?>"<?php checked( $show_pending ); ?> />
@@ -79,6 +82,7 @@ function update($new_instance, $old_instance)
 	$instance['show_cartlink'] = !empty($new_instance['show_cartlink']) ? 1 : 0;
 	$instance['show_items'] = !empty($new_instance['show_items']) ? 1 : 0;
 	$instance['show_upload'] = !empty($new_instance['show_upload']) ? 1 : 0;
+	$instance['show_upload_new'] = !empty($new_instance['show_upload_new']) ? 1 : 0;
 	$instance['show_unpaid'] = !empty($new_instance['show_unpaid']) ? 1 : 0;
 	$instance['show_pending'] = !empty($new_instance['show_pending']) ? 1 : 0;
 	$instance['show_logout_link'] = !empty($new_instance['show_logout_link']) ? 1 : 0;
@@ -97,7 +101,8 @@ function widget($args, $instance)
 {	
 	extract($args, EXTR_SKIP);
 	global $woocommerce;
-	
+
+
 	//$logged_out_title = (!empty()) ? $instance['logged_out_title'] : __('Customer Login', 'woocommerce-my-account-widget');
 	$logged_out_title = apply_filters( 'widget_title', empty($instance['logged_out_title']) ? __('Customer Login', 'woocommerce-my-account-widget') : $instance['logged_out_title'], $instance );
 	//$logged_in_title = (!empty()) ? $instance['logged_in_title'] : __('Welcome %s', 'woocommerce-my-account-widget');
@@ -113,6 +118,7 @@ function widget($args, $instance)
 		
 		$it = (isset($instance['show_items']) && $instance['show_items']) ? '1' : '0';
 		$u = (isset($instance['show_upload']) && $instance['show_upload']) ? '1' : '0';
+		$unew = (isset($instance['show_upload_new']) && $instance['show_upload_new']) ? '1' : '0';
 		$up = (isset($instance['show_unpaid']) && $instance['show_unpaid']) ? '1' : '0';
 		$p = (isset($instance['show_pending']) && $instance['show_pending']) ? '1' : '0';
 		$lo = (isset($instance['show_logout_link']) && $instance['show_logout_link']) ? '1' : '0';
@@ -125,13 +131,14 @@ function widget($args, $instance)
 		if($user->first_name!="") { $uname=$user->first_name;} else { $uname=$user->display_name; }
 		if ( $logged_in_title ) echo $before_title . sprintf( $logged_in_title, ucwords($uname) ) . $after_title;
 		
-		
+
 		
 				
 		if($c) {echo '<p><a class="woo-ma-button cart-link woo-ma-cart-link" href="'.get_permalink(wma_lang_id($cart_page_id)) .'" title="'. __('View your shopping cart','woocommerce-my-account-widget').'">'.__('View your shopping cart','woocommerce-my-account-widget').'</a></p>';}
 		
 		$notcompleted=0;
 		$uploadfile=0;
+		$uploadfile_new=0;
 		$notpaid=0;
 		$customer_id = get_current_user_id();
 		if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
@@ -156,39 +163,53 @@ function widget($args, $instance)
 
         }
 		if ($customer_orders) {
-			foreach ($customer_orders as $customer_order) :
-				$woocommerce1=0;
-				if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
-				    $order = new WC_Order();
-                } else {
-                    $order = get_order();
-                }
-				$order->populate( $customer_order );
-				//$status = get_term_by('slug', $order->status, 'shop_order_status');
-				if($order->status!='completed' && $order->status!='cancelled'){ $notcompleted++; }
-				
-				
-			/* upload files */
-		if (function_exists('woocommerce_umf_admin_menu')) {
-			if(get_max_upload_count($order) >0 ) {
-				$j=1;
-				foreach ( $order->get_items() as $order_item ) {
-					$max_upload_count=get_max_upload_count($order,$order_item['product_id']);
-					$i=1;
-					$upload_count=0;
-					while ($i <= $max_upload_count) {
-						if(get_post_meta( $order->id, '_woo_umf_uploaded_file_name_' . $j, true )!="") {$upload_count++;}
-						$i++;
-						$j++;
-					}
-					/* toon aantal nog aan te leveren bestanden */
-					$upload_count=$max_upload_count-$upload_count;
-					$uploadfile+=$upload_count;
-				}
-			}
-		}
-		if (in_array($order->status, array('on-hold','pending', 'failed'))) { $notpaid++;}
-		endforeach;
+    			foreach ($customer_orders as $customer_order) :
+    				$woocommerce1=0;
+    				if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
+    				    $order = new WC_Order();
+                    } else {
+                        $order = get_order();
+                    }
+    				$order->populate( $customer_order );
+    				//$status = get_term_by('slug', $order->status, 'shop_order_status');
+    				if($order->status!='completed' && $order->status!='cancelled'){ $notcompleted++; }
+
+
+    			/* upload files */
+    		if (function_exists('woocommerce_umf_admin_menu')) {
+    			if(get_max_upload_count($order) >0 ) {
+    				$j=1;
+    				foreach ( $order->get_items() as $order_item ) {
+    					$max_upload_count=get_max_upload_count($order,$order_item['product_id']);
+    					$i=1;
+    					$upload_count=0;
+    					while ($i <= $max_upload_count) {
+    						if(get_post_meta( $order->id, '_woo_umf_uploaded_file_name_' . $j, true )!="") {$upload_count++;}
+    						$i++;
+    						$j++;
+    					}
+    					/* toon aantal nog aan te leveren bestanden */
+    					$upload_count=$max_upload_count-$upload_count;
+    					$uploadfile+=$upload_count;
+    				}
+    			}
+    		}
+
+
+            if (class_exists('WPF_Uploads')) {
+
+                // Uploads needed
+                $uploads_needed = WPF_Uploads::order_needs_upload($order, true);
+                $uploaded_count_new = WPF_Uploads::order_get_upload_count($order->id);
+
+                $uploads_needed_left = $uploads_needed - $uploaded_count_new;
+
+                $uploadfile_new = $uploadfile_new + $uploads_needed_left;
+            }
+
+
+    		if (in_array($order->status, array('on-hold','pending', 'failed'))) { $notpaid++;}
+    		endforeach;
 		}
 		
 		$my_account_id=wma_lang_id(get_option('woocommerce_myaccount_page_id'));
@@ -204,14 +225,23 @@ function widget($args, $instance)
 					</li>';
 			} 
 			if($u && function_exists('woocommerce_umf_admin_menu')) {
-				
+
 				echo '<li class="woo-ma-link upload">
 						<a href="'.get_permalink( $my_account_id ).'" title="'. __('Upload files', 'woocommerce-my-account-widget').'">
 							<span>'.$uploadfile.'</span> '
 							._n('file to upload','files to upload', $uploadfile, 'woocommerce-my-account-widget' ).'
 						</a>
 					</li>';
-			} 
+			}
+            if($unew && class_exists('WPF_Uploads')) {
+
+				echo '<li class="woo-ma-link upload">
+						<a href="'.get_permalink( $my_account_id ).'" title="'. __('Upload files', 'woocommerce-my-account-widget').'">
+							<span>'.$uploadfile_new.'</span> '
+							._n('file to upload','files to upload', $uploadfile_new, 'woocommerce-my-account-widget' ).'
+						</a>
+					</li>';
+			}
 			if($up) {
 				echo '<li class="woo-ma-link paid">
 						<a href="'.get_permalink( $my_account_id ).'" title="'. __('Pay orders', 'woocommerce-my-account-widget').'">
