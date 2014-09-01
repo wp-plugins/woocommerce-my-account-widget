@@ -24,7 +24,13 @@ This plugin is compatible with Wordpress 4.0-beta3 and WooCommerce 2.2.0-bleedin
 * Display a log-in form when logged out
 * Localisation: English, Dutch, Norwegian, Russian and Persian, Serbo-Croation
 
+** WooCommerce Uploads **
+
+This widgets shows also the number of files the customer has to upload, when you use the WooCommerce Uploads plugin. 
+More information about that plugin on [WP Fortune.com](http://wpfortune.com/shop/plugins/woocommerce-uploads/).
+
 ** WooCommerce Upload My File plugin **
+
 This widgets shows also the number of files the customer has to upload, when you use our WooCommerce Upload My File plugin. 
 More information about that plugin on [our website](http://wordpress.geev.nl/product/woocommerce-upload-my-file/).
 
