@@ -4,7 +4,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Author URI: http://wordpress.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
-Tested up to: 4.0-beta3
+Tested up to: 4.0
 Stable tag: 0.4.2
 License: GPLv2
 
@@ -12,7 +12,7 @@ This plugin adds a widget with customer account information to your WooCommerce 
 == Description ==
 The _WooCommerce My Account Widget_ allows shop managers to display customer information in a widget.
 
-This plugin is compatible with Wordpress 4.0-beta3 and WooCommerce 2.2.0-bleeding.
+This plugin is compatible with Wordpress 4.0 and WooCommerce 2.2.0-bleeding.
 
 **Features**
 
