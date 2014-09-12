@@ -22,7 +22,7 @@ This plugin is compatible with Wordpress 4.0 and WooCommerce 2.2.0-bleeding.
 * Display number of uncompleted orders
 * Display number of files left to upload (working with our WooCommerce Upload My File plugin
 * Display a log-in form when logged out
-* Localisation: English, Dutch, Norwegian, Russian and Persian, Serbo-Croation
+* Localisation: English, Dutch, Norwegian, Russian and Persian, Serbo-Croation, Spanish
 
 **WooCommerce Uploads**
 
