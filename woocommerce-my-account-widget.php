@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4.4
+Version: 0.4.5
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -346,11 +346,32 @@ function wma_email_login_auth( $user, $username, $password ) {
 	return wp_authenticate_username_password( null, $username, $password );
 }
 
+add_action( 'wp_footer', 'wma_login_validate' );
+
+function wma_login_validate() {
+?>
+	<script type="text/javascript">
+
+        jQuery('form#wma_login_form').submit(function(){
+
+            if (jQuery(this).find('#user_login').val() == '' || jQuery(this).find('#user_pass').val() == '') {
+              alert('<?php _e("Please fill in your username and password", "woocommerce-my-account-widget"); ?>');
+              return false;
+            }
+
+
+        });
+
+    </script>
+
+<?php
+}
+
 if(get_option('wma_login_with_email')=='on') {
 	remove_filter( 'authenticate', 'wp_authenticate_username_password', 20, 3 );
 	add_filter( 'authenticate', 'wma_email_login_auth', 20, 3 );
-	add_action( 'wp_footer', 'wma_email_login' );
-} 
+    add_action( 'wp_footer', 'wma_email_login' );
+}
 
 function wma_email_login() {
 ?>
@@ -358,7 +379,8 @@ function wma_email_login() {
 	// Form Label
 	if ( document.getElementById('wma_login_form') )
 		document.getElementById('wma_login_form').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( 'Username or Email', 'woocommerce-my-account-widget' ) ); ?>';
-</script>
+    </script>
+
 <?php
 }
 
