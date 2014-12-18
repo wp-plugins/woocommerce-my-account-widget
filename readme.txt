@@ -51,7 +51,7 @@ Please backup first.
 == Changelog ==
 ***WooCommerce My Account Widget***
 
-= 2014.11.24 - version 0.4.5 =
+= 2014.12.18 - version 0.4.5 =
 * Added: French translation
 * Added: Alert message when username and/or password are empty
 
