@@ -377,6 +377,7 @@ function wma_email_login() {
 ?>
 	<script type="text/javascript">
 	// Form Label
+	alert('test');
 	if ( document.getElementById('wma_login_form') )
 		document.getElementById('wma_login_form').childNodes[1].childNodes[1].childNodes[0].nodeValue = '<?php echo esc_js( __( 'Username or Email', 'woocommerce-my-account-widget' ) ); ?>';
     </script>

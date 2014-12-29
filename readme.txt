@@ -5,7 +5,7 @@ Author URI: http://wordpress.geev.nl
 Tags: woocommerce, file upload
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 0.4.5
+Stable tag: 0.4.6
 License: GPLv2
 
 This plugin adds a widget with customer account information to your WooCommerce shop.
@@ -50,6 +50,9 @@ Please backup first.
 
 == Changelog ==
 ***WooCommerce My Account Widget***
+
+= 2014.12.29 - version 0.4.6 =
+* Fixed: wrong text view on some themes for "Username or Email"
 
 = 2014.12.18 - version 0.4.5 =
 * Added: French translation
