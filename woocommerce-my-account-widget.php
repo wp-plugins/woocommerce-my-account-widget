@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4.5
+Version: 0.4.8
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -167,10 +167,11 @@ function widget($args, $instance)
     				$woocommerce1=0;
     				if ( version_compare( WOOCOMMERCE_VERSION, "2.2" ) < 0 ) {
     				    $order = new WC_Order();
+                        $order->populate( $customer_order );
                     } else {
-                        $order = wc_get_order();
+                        $order = wc_get_order($customer_order->ID);
                     }
-    				$order->populate( $customer_order );
+    		   
     				//$status = get_term_by('slug', $order->status, 'shop_order_status');
     				if($order->status!='completed' && $order->status!='cancelled'){ $notcompleted++; }
 
