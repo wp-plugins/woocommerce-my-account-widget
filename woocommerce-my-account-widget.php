@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4.8
+Version: 0.4.9
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
@@ -114,7 +114,7 @@ function widget($args, $instance)
 	$cart_page_id = get_option('woocommerce_cart_page_id');
 	
 	//check if user is logged in 
-	if ( is_user_logged_in() ) { 
+	if ( is_user_logged_in() ) {
 		
 		$it = (isset($instance['show_items']) && $instance['show_items']) ? '1' : '0';
 		$u = (isset($instance['show_upload']) && $instance['show_upload']) ? '1' : '0';
@@ -250,7 +250,7 @@ function widget($args, $instance)
 							._n('payment required','payments required', $notpaid, 'woocommerce-my-account-widget' ).'
 						</a>
 					</li>';
-			} 
+			}
 			if($p) {
 				echo '<li class="woo-ma-link pending">
 						<a href="'.get_permalink( $my_account_id ).'" title="'. __('View uncompleted orders', 'woocommerce-my-account-widget').'">
@@ -284,7 +284,7 @@ function widget($args, $instance)
 			'id_password' => 'user_pass',
 			'id_remember' => 'rememberme',
 			'id_submit' => 'wp-submit',
-			'remember' => false,
+			'remember' => true,
 			'value_username' => NULL,
 			'value_remember' => false );
 			
@@ -308,7 +308,14 @@ function widget($args, $instance)
 
 }
 
-load_plugin_textdomain('woocommerce-my-account-widget', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' ); 
+add_action('plugins_loaded', 'wma_load_textdomain');
+
+function wma_load_textdomain() {
+
+    load_plugin_textdomain('woocommerce-my-account-widget', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+}
+
 add_action( 'widgets_init', create_function('', 'return register_widget("WooCommerceMyAccountWidget");') );
 
 /**
