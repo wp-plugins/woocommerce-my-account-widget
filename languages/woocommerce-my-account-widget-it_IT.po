@@ -1,21 +1,54 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WooCommerce My Account Widget\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-04-06 12:36+0100\n"
-"PO-Revision-Date: 2014-04-06 12:36+0100\n"
+"PO-Revision-Date: Fri Jun 26 2015 18:54:19 GMT+0200 (CEST)\n"
 "Last-Translator: Bart Pluijms <info@geev.nl>\n"
 "Language-Team: Geev vormgeeving <info@geev.nl>\n"
 "Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Loco-Source-Locale: it_IT\n"
+"X-Generator: Loco - https://localise.biz/\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n;_n:1,2;_nx_noop:1,2;"
 "_n_noop:1,2;_nx:1,2\n"
 "X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
+"X-Loco-Parser: loco_parse_po\n"
+"X-Loco-Target-Locale: it_IT"
+
+#: ../woocommerce-my-account-widget.php:50
+msgid "Show logout link"
+msgstr "Mostra link Logout"
+
+#: ../woocommerce-my-account-widget.php:52
+msgid "Redirect to page after login:"
+msgstr "Dopo il login reindirizza alla pagina:"
+
+#: ../woocommerce-my-account-widget.php:55
+msgid "Select page"
+msgstr "Seleziona pagina"
+
+#: ../woocommerce-my-account-widget.php:67
+msgid "Other options"
+msgstr "Altre Opzioni"
+
+#: ../woocommerce-my-account-widget.php:69
+msgid "Login with email address"
+msgstr "Login con indirizzo email"
+
+#: ../woocommerce-my-account-widget.php:221
+msgid "Login failed, please try again"
+msgstr "Login errato, riprova!"
+
+#: ../woocommerce-my-account-widget.php:309
+msgid "Username or Email"
+msgstr "Username o Email"
 
 #: ../woocommerce-my-account-widget.php:14
 msgid "WooCommerce My Account Widget shows order & account data"
@@ -63,26 +96,6 @@ msgstr "Mostra numero di ordini non pagati"
 #: ../woocommerce-my-account-widget.php:48
 msgid "Show number of uncompleted orders"
 msgstr "Mostra numero di ordini incompleti"
-
-#: ../woocommerce-my-account-widget.php:50
-msgid "Show logout link"
-msgstr ""
-
-#: ../woocommerce-my-account-widget.php:52
-msgid "Redirect to page after login:"
-msgstr ""
-
-#: ../woocommerce-my-account-widget.php:55
-msgid "Select page"
-msgstr ""
-
-#: ../woocommerce-my-account-widget.php:67
-msgid "Other options"
-msgstr ""
-
-#: ../woocommerce-my-account-widget.php:69
-msgid "Login with email address"
-msgstr ""
 
 #: ../woocommerce-my-account-widget.php:128
 #: ../woocommerce-my-account-widget.php:180
@@ -134,10 +147,6 @@ msgstr "Area personale"
 msgid "Log out"
 msgstr "Esci"
 
-#: ../woocommerce-my-account-widget.php:221
-msgid "Login failed, please try again"
-msgstr ""
-
 #: ../woocommerce-my-account-widget.php:228
 msgid "Username"
 msgstr "Codice utente"
@@ -162,29 +171,6 @@ msgstr "Password dimenticata"
 msgid "Register"
 msgstr "Registrazione"
 
-#: ../woocommerce-my-account-widget.php:309
-msgid "Username or Email"
-msgstr ""
-
-#, fuzzy
-#~ msgid "products in your shoppingcart"
-#~ msgstr "<span>%d</span> prodotti nel tuo carrello "
-
-#, fuzzy
-#~ msgid "<span>%d</span> "
-#~ msgstr "<span>%d</span> ordine in sospeso"
-
-#, fuzzy
-#~ msgid "files to upload"
-#~ msgstr "<span>%d</span> archivi da caricare"
-
-#, fuzzy
-#~ msgid "payments required"
-#~ msgstr "<span>%d</span>pagamenti rchiesti"
-
-#, fuzzy
-#~ msgid "orders pending"
-#~ msgstr "<span>%d</span> ordini in sospeso"
-
-#~ msgid "Sorry, no files have been uploaded yet."
-#~ msgstr "Mi dispiace non ci sono file caricati ancora"
+#: ../woocommerce-my-account-widget.php:366
+msgid "Please fill in your username and password"
+msgstr "Compila i campi username e password"
