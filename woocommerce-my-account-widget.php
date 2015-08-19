@@ -5,14 +5,14 @@ Plugin URI: http://wordpress.org/extend/plugins/woocommerce-my-account-widget/
 Description: WooCommerce My Account Widget shows order & account data.
 Author: Bart Pluijms
 Author URI: http://www.geev.nl/
-Version: 0.4.9
+Version: 0.5.0
 */
 class WooCommerceMyAccountWidget extends WP_Widget
 {
-function WooCommerceMyAccountWidget()
+function __construct()
 {
 	$widget_ops = array('classname' => 'WooCommerceMyAccountWidget', 'description' => __( 'WooCommerce My Account Widget shows order & account data', 'woocommerce-my-account-widget' ) );
-    $this->WP_Widget('WooCommerceMyAccountWidget', __( 'WooCommerce My Account Widget', 'woocommerce-my-account-widget' ), $widget_ops);
+    parent::__construct('WooCommerceMyAccountWidget', __( 'WooCommerce My Account Widget', 'woocommerce-my-account-widget' ), $widget_ops);
 }
 function form($instance)
 {
