@@ -24,6 +24,7 @@ function form($instance)
 	$show_unpaid = isset( $instance['show_unpaid'] ) ? (bool) $instance['show_unpaid'] : false;
 	$show_pending = isset( $instance['show_pending'] ) ? (bool) $instance['show_pending'] : false;
 	$show_logout_link = isset( $instance['show_logout_link'] ) ? (bool) $instance['show_logout_link'] : false;
+	$show_edit_account_link = isset( $instance['show_edit_account_link'] ) ? (bool) $instance['show_edit_account_link'] : false;
 	$login_with_email = isset( $instance['login_with_email'] ) ? (bool) $instance['login_with_email'] : false;
 	
 ?>
@@ -50,7 +51,10 @@ function form($instance)
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_pending') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_pending') ); ?>"<?php checked( $show_pending ); ?> />
 		<label for="<?php echo $this->get_field_id('show_pending'); ?>"><?php _e( 'Show number of uncompleted orders', 'woocommerce-my-account-widget' ); ?></label><br>
 		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_logout_link') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_logout_link') ); ?>"<?php checked( $show_logout_link ); ?> />
-		<label for="<?php echo $this->get_field_id('show_logout_link'); ?>"><?php _e( 'Show logout link', 'woocommerce-my-account-widget' ); ?></label>
+		<label for="<?php echo $this->get_field_id('show_logout_link'); ?>"><?php _e( 'Show logout link', 'woocommerce-my-account-widget' ); ?></label><br>
+		<input type="checkbox" class="checkbox" id="<?php echo esc_attr( $this->get_field_id('show_edit_account_link') ); ?>" name="<?php echo esc_attr( $this->get_field_name('show_edit_account_link') ); ?>"<?php checked( $show_edit_account_link ); ?> />
+		<label for="<?php echo $this->get_field_id('show_edit_account_link'); ?>"><?php _e( 'Show edit account link', 'woocommerce-my-account-widget' ); ?></label>
+
 	</p>
 	<p><label for="<?php echo $this->get_field_id('wma_redirect'); ?>"><?php _e('Redirect to page after login:', 'woocommerce-my-account-widget') ?></label>
 		<select name="<?php echo esc_attr( $this->get_field_name('wma_redirect') ); ?>" class="widefat">
@@ -86,6 +90,7 @@ function update($new_instance, $old_instance)
 	$instance['show_unpaid'] = !empty($new_instance['show_unpaid']) ? 1 : 0;
 	$instance['show_pending'] = !empty($new_instance['show_pending']) ? 1 : 0;
 	$instance['show_logout_link'] = !empty($new_instance['show_logout_link']) ? 1 : 0;
+	$instance['show_edit_account_link'] = !empty($new_instance['show_edit_account_link']) ? 1 : 0;
 	$instance['login_with_email'] = !empty($new_instance['login_with_email']) ? 1 : 0;
 	$instance['wma_redirect'] = esc_attr($new_instance['wma_redirect']);
 	
@@ -122,6 +127,7 @@ function widget($args, $instance)
 		$up = (isset($instance['show_unpaid']) && $instance['show_unpaid']) ? '1' : '0';
 		$p = (isset($instance['show_pending']) && $instance['show_pending']) ? '1' : '0';
 		$lo = (isset($instance['show_logout_link']) && $instance['show_logout_link']) ? '1' : '0';
+		$ea = (isset($instance['show_edit_account_link']) && $instance['show_edit_account_link']) ? '1' : '0';
 	
 	// redirect url after login / logout
 	if(is_multisite()) { $woo_ma_home=network_home_url(); } else {$woo_ma_home=home_url();}
@@ -261,6 +267,7 @@ function widget($args, $instance)
 			} 
 		echo '</ul>';
 		echo '<p><a class="woo-ma-button woo-ma-myaccount-link myaccount-link" href="'.get_permalink( $my_account_id ).'" title="'. __('My Account','woocommerce-my-account-widget').'">'.__('My Account','woocommerce-my-account-widget').'</a></p>';
+		if($ea==1) { echo '<p><a class="woo-ma-button woo-ma-myaccount-link myaccount-link" href="'.wc_customer_edit_account_url().'" title="'. __('Edit account','woocommerce-my-account-widget').'">'.__('Edit account','woocommerce-my-account-widget').'</a></p>'; }
 		if($lo==1) { echo '<p><a class="woo-ma-button woo-ma-logout-link logout-link" href="'.wp_logout_url($woo_ma_home).'" title="'. __('Log out','woocommerce-my-account-widget').'">'.__('Log out','woocommerce-my-account-widget').'</a></p>'; }
 	}
 	else {
