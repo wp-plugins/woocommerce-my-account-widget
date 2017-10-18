@@ -194,4 +194,4 @@ msgstr "Registrieren"
 # @ default
 #: ../woocommerce-my-account-widget.php:309
 msgid "Username or Email"
-msgstr ""
+msgstr "Benutzername oder E-Mail"
